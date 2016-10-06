@@ -245,13 +245,14 @@
 
 # need to disable this profile, otherwise the pip inside the sandbox venv has no permissions
 # to install anything
-- name: code sandbox | put sandbox apparmor profile in complain mode
-  command: /usr/sbin/aa-complain /etc/apparmor.d/code.sandbox
-  when: EDXAPP_PYTHON_SANDBOX
-  tags:
-    - edxapp-sandbox
-    - install
-    - install:app-requirements
+# disabled, see github ikto/edx-configuration#1
+#- name: code sandbox | put sandbox apparmor profile in complain mode
+#  command: /usr/sbin/aa-complain /etc/apparmor.d/code.sandbox
+#  when: EDXAPP_PYTHON_SANDBOX
+#  tags:
+#    - edxapp-sandbox
+#    - install
+#    - install:app-requirements
 
 - name: code sandbox | Install base sandbox requirements and create sandbox virtualenv
   pip:
@@ -282,13 +283,14 @@
     - install
     - install:app-requirements
 
-- name: code sandbox | put code sandbox into aa-enforce or aa-complain mode, depending on EDXAPP_SANDBOX_ENFORCE
-  command: /usr/sbin/{{ edxapp_aa_command }} /etc/apparmor.d/code.sandbox
-  when: EDXAPP_PYTHON_SANDBOX
-  tags:
-    - edxapp-sandbox
-    - install
-    - install:app-requirements
+# disabled, see github ikto/edx-configuration#1
+#- name: code sandbox | put code sandbox into aa-enforce or aa-complain mode, depending on EDXAPP_SANDBOX_ENFORCE
+#  command: /usr/sbin/{{ edxapp_aa_command }} /etc/apparmor.d/code.sandbox
+#  when: EDXAPP_PYTHON_SANDBOX
+#  tags:
+#    - edxapp-sandbox
+#    - install
+#    - install:app-requirements
 
 - name: compiling all py files in the edx-platform repo
   shell: "{{ edxapp_venv_bin }}/python -m compileall -q -x .git/.* {{ edxapp_code_dir }}"

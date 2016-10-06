@@ -72,21 +72,22 @@
   tags:
     - edxapp-sandbox
 
+# Disabled, see github ikto/edx-configuration#1
 # we boostrap and enable the apparmor service here. In deploy.yml we disable, deploy, then re-enable
 # so we need to enable it in main.yml
-- name: code sandbox | start apparmor service
-  service:
-    name: apparmor
-    state: started
-  tags:
-    - edxapp-sandbox
+#- name: code sandbox | start apparmor service
+#  service:
+#    name: apparmor
+#    state: started
+#  tags:
+#    - edxapp-sandbox
 
-- name: code sandbox | (bootstrap) load code sandbox profile
-  command: apparmor_parser -r /etc/apparmor.d/code.sandbox
-  tags:
-    - edxapp-sandbox
+#- name: code sandbox | (bootstrap) load code sandbox profile
+#  command: apparmor_parser -r /etc/apparmor.d/code.sandbox
+#  tags:
+#    - edxapp-sandbox
 
-- name: code sandbox | (bootstrap) put code sandbox into aa-enforce or aa-complain mode depending on EDXAPP_SANDBOX_ENFORCE
-  command: /usr/sbin/{{ edxapp_aa_command }} /etc/apparmor.d/code.sandbox
-  tags:
-    - edxapp-sandbox
+#- name: code sandbox | (bootstrap) put code sandbox into aa-enforce or aa-complain mode depending on EDXAPP_SANDBOX_ENFORCE
+#  command: /usr/sbin/{{ edxapp_aa_command }} /etc/apparmor.d/code.sandbox
+#  tags:
+#    - edxapp-sandbox
