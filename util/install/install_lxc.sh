@@ -23,7 +23,7 @@ cd /var/tmp/edx-configuration
 sudo pip install -r requirements.txt
 sudo pip install setuptools --upgrade
 
-cd /var/tmp/configuration/playbooks
+cd /var/tmp/edx-configuration/playbooks
 sudo ansible-playbook -c local --limit "localhost:127.0.0.1" edx_sandbox.yml \
 -i "localhost," \
 -e "EDXAPP_PREVIEW_LMS_BASE=preview.${HOSTNAME}" \
