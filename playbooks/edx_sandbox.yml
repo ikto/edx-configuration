@@ -19,7 +19,7 @@
     SANDBOX_ENABLE_ECOMMERCE: False
     COMMON_ENABLE_SPLUNKFORWARDER: False
   roles:
-    - { role: swapfile, SWAPFILE_SIZE: "2GB" }
+    - { role: swapfile, SWAPFILE_SIZE: false }
     - role: nginx
       nginx_sites:
       - certs
